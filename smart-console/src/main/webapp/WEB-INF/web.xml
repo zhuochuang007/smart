@@ -47,7 +47,7 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>shiroFilter</filter-name>
-		<url-pattern>/*</url-pattern>
+		<url-pattern>/aa/*</url-pattern>
 	</filter-mapping>
 	<!-- apache cxf -->
 	<servlet>
@@ -60,6 +60,28 @@
 	<servlet-mapping>
 		<servlet-name>cxf</servlet-name>
 		<url-pattern>/services/*</url-pattern>
+	</servlet-mapping>
+	<!-- 附件上传 -->
+	<listener>
+		<listener-class>
+			org.apache.commons.fileupload.servlet.FileCleanerCleanup
+		</listener-class>
+	</listener>
+	<servlet>
+		<servlet-name>uploadServlet</servlet-name>
+		<servlet-class>com.zhuochuang.smart.fileupload.servlet.FileUploadServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>uploadServlet</servlet-name>
+		<url-pattern>/servlet/uploadServlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>getFileProcessServlet</servlet-name>
+		<servlet-class>com.zhuochuang.smart.fileupload.servlet.GetFileProcessServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>getFileProcessServlet</servlet-name>
+		<url-pattern>/servlet/getFileProcessServlet</url-pattern>
 	</servlet-mapping>
 	<!-- 页面资源过滤器 -->
 	<filter>

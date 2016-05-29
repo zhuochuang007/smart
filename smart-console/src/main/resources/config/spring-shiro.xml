@@ -8,7 +8,7 @@
 	<!-- shiro过滤器 -->
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<property name="securityManager" ref="securityManager" />
-		<property name="loginUrl" value="/view/index.html" />
+		<property name="loginUrl" value="/view/user/login.html" />
 		<property name="successUrl" value="/view/index.html" />
 		<property name="unauthorizedUrl" value="/view/index.html" />
 		<property name="filterChainDefinitions">
@@ -18,6 +18,7 @@
 				/styles/** = anon
 				/images/** = anon
 				/**/*.js = anon
+				/** = anon
 				<!-- 首页允许访问 -->
 				/smart = anon
 				<!-- 登录请求允许访问 -->
