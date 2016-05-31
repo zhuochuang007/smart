@@ -20,11 +20,11 @@
 	<context:annotation-config />
 	<!-- 自动扫描 service -->
 	<context:component-scan base-package="com.zhuochuang.smart" />
-	<!-- 引入配置文件 -->
-	<bean id="propertyConfigurer"
+	<!-- 引入配置文件   统一在applicationContext.xml中加载，重写相关方法提供工具类-->
+	<!-- <bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="location" value="classpath:config/jdbc.properties" />
-	</bean>
+	</bean> -->
 	<!-- 配置druid数据源连接池 -->
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
 		init-method="init" destroy-method="close">
