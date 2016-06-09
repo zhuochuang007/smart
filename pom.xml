@@ -36,7 +36,7 @@
 		<junit.version>4.12</junit.version>
 		<javaee.api.version>7.0</javaee.api.version>
 		<!-- 分页插件 -->
-		<pagehelper.version>4.1.2</pagehelper.version>
+		<pagehelper.version>4.1.6</pagehelper.version>
 		<!-- spring aop依赖包 -->
 		<aspectjweaver.version>1.8.6</aspectjweaver.version>
 		<!-- mysql -->
