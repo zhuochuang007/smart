@@ -10,4 +10,12 @@
 	</parent>
 	<artifactId>smart-module-system</artifactId>
 	<name>smart-module-system</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.zhuochuang</groupId>
+			<artifactId>smart-entity</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
 </project>

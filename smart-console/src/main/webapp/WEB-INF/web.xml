@@ -69,7 +69,7 @@
 	</listener>
 	<servlet>
 		<servlet-name>uploadServlet</servlet-name>
-		<servlet-class>com.zhuochuang.smart.fileupload.servlet.FileUploadServlet</servlet-class>
+		<servlet-class>com.zhuochuang.smart.fileupload.servlet.UploadServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>uploadServlet</servlet-name>

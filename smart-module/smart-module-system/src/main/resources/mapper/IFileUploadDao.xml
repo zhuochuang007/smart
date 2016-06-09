@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhuochuang.smart.fileupload.dao.IFileUploadDao">
+	<insert id="createFile" parameterType="java.util.List">
+		insert into file_upload_t
+		(file_name,
+		file_path,
+		file_type,
+		file_suffix,
+		file_batch_id,
+		upload_date,
+		file_temp_name,
+		file_status
+		)
+		values
+		<foreach collection="fileList" item="item" index="index" separator=",">  
+		    (#{item.fileName},
+		    #{item.filePath},
+		    #{item.fileType},
+		    #{item.fileSuffix},
+		    #{item.fileBatchId},
+		    now(),
+		    #{item.fileTempName},
+		    #{item.fileStatus})
+		</foreach>
+	</insert>
+</mapper>
