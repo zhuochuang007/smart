@@ -75,13 +75,14 @@
 		<servlet-name>uploadServlet</servlet-name>
 		<url-pattern>/servlet/uploadServlet</url-pattern>
 	</servlet-mapping>
+	<!-- 附件下载 -->
 	<servlet>
-		<servlet-name>getFileProcessServlet</servlet-name>
-		<servlet-class>com.zhuochuang.smart.fileupload.servlet.GetFileProcessServlet</servlet-class>
+		<servlet-name>downloadServlet</servlet-name>
+		<servlet-class>com.zhuochuang.smart.fileupload.servlet.DownloadServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>getFileProcessServlet</servlet-name>
-		<url-pattern>/servlet/getFileProcessServlet</url-pattern>
+		<servlet-name>downloadServlet</servlet-name>
+		<url-pattern>/servlet/downloadServlet</url-pattern>
 	</servlet-mapping>
 	<!-- 页面资源过滤器 -->
 	<filter>

@@ -17,5 +17,11 @@
 			<artifactId>smart-entity</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>com.zhuochuang</groupId>
+			<artifactId>smart-core</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 	</dependencies>
 </project>

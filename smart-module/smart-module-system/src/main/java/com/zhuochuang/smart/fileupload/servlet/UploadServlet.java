@@ -108,10 +108,10 @@ public class UploadServlet extends HttpServlet
                             String fieldName = fileItem.getFieldName();
                             //文件名称(包含后缀)
                             String name = fileItem.getName();
-                            //文件名称(不包含后缀)
-                            String fileName = FilenameUtils.getName(name);
                             //文件后缀
                             String fileSuffix = FilenameUtils.getExtension(name);
+                            //文件名称(不包含后缀)
+                            String fileName = FilenameUtils.getName(name).replace("." + fileSuffix, "");
                             //校验文件类型是否为允许上传类型#FIXME
                             //文件大小
                             long fileSize = fileItem.getSize();
@@ -129,6 +129,7 @@ public class UploadServlet extends HttpServlet
                             fileVO.setFilePath(FILE_PATH);
                             fileVO.setFileSuffix(fileSuffix);
                             fileVO.setFileBatchId(fileBatchId);
+                            fileVO.setFileTempName(fileTempName.replace("." + fileSuffix, ""));
                             fileList.add(fileVO);
                         }
                     }

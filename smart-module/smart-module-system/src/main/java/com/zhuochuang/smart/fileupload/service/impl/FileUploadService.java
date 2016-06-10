@@ -22,4 +22,18 @@ public class FileUploadService implements IFileUploadService
         fileUploadDao.createFile(fileList);
     }
     
+    @Override
+    public FileVO findFileById(FileVO fileVO)
+        throws Exception
+    {
+        return fileUploadDao.findFileById(fileVO);
+    }
+    
+    @Override
+    public List<FileVO> findFileList(FileVO fileVO)
+        throws Exception
+    {
+        return fileUploadDao.findFileList(fileVO);
+    }
+    
 }

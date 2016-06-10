@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.zhuochuang.smart.fileupload.dao.IFileUploadDao">
+	<resultMap id="fileMap" type="com.zhuochuang.smart.entity.file.FileVO">
+		<id column="file_id" property="fileId"/>
+		<result column="file_name" property="fileName"/>
+		<result column="file_path" property="filePath"/>
+		<result column="file_type" property="fileType"/>
+		<result column="file_suffix" property="fileSuffix"/>
+		<result column="file_batch_id" property="fileBatchId"/>
+		<result column="upload_date" property="uploadDate"/>
+		<result column="file_temp_name" property="fileTempName"/>
+		<result column="file_status" property="fileStatus"/>
+	</resultMap>
+
 	<insert id="createFile" parameterType="java.util.List">
 		insert into file_upload_t
 		(file_name,
@@ -24,4 +36,43 @@
 		    #{item.fileStatus})
 		</foreach>
 	</insert>
+	
+	<sql id="common_file_column">
+		file_id,
+		file_name,
+		file_path,
+		file_status,
+		file_suffix,
+		file_temp_name,
+		file_type,
+		file_batch_id
+	</sql>
+	
+	<sql id="common_file_sql">
+		SELECT
+		<include refid="common_file_column"></include>
+		FROM
+		file_upload_t
+	</sql>
+	
+	<sql id="common_file_condition">
+		<where>
+			<if test="fileVO.fileId != null and fileVO.fileId != ''">
+				file_id = #{fileVO.fileId,jdbcType=VARCHAR}
+			</if>
+			<if test="fileVO.fileBatchId != null and fileVO.fileBatchId!= ''">
+				and file_batch_id = #{fileVO.fileBatchId,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</sql>
+	
+	<select id="findFileById" parameterType="com.zhuochuang.smart.entity.file.FileVO" resultMap="fileMap">
+		<include refid="common_file_sql"></include>
+		<include refid="common_file_condition"></include>
+	</select>
+	
+	<select id="findFileList" parameterType="com.zhuochuang.smart.entity.file.FileVO" resultMap="fileMap">
+		<include refid="common_file_sql"></include>
+		<include refid="common_file_condition"></include>
+	</select>
 </mapper>
