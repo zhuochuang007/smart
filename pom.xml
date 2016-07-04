@@ -343,7 +343,6 @@
 		<module>smart-core</module>
 		<module>smart-entity</module>
 		<module>smart-resources</module>
-		<module>smart-web</module>
 		<module>smart-console</module>
 	</modules>
 </project>
