@@ -1,6 +1,7 @@
 package com.zhuochuang.smart.property.service.impl;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import com.zhuochuang.smart.entity.property.Property;
 import com.zhuochuang.smart.property.dao.IPropertyDao;
@@ -13,6 +14,7 @@ import com.zhuochuang.smart.property.service.IPropertyService;
  * @author  ouxin 
  * @version  [版本号, 2016年7月4日] 
  */
+@Named
 public class PropertyService implements IPropertyService
 {
     
