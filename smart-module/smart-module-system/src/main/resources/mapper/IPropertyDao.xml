@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhuochuang.smart.fileupload.dao.IPropertyDao">
+	<resultMap id="propertyMap" type="com.zhuochuang.smart.entity.property.Property">
+		<id column="property_id" property="propertyId" />
+		<result column="parent_id" property="parentId" />
+		<result column="display_name" property="displayName" />
+		<result column="name" property="name" />
+		<result column="value" property="value" />
+		<result column="description" property="description" />
+		<result column="list_index" property="listIndex" />
+		<result column="parent_path" property="parentPath" />
+		<result column="status" property="status" />
+		<result column="create_by" property="createBy" />
+		<result column="create_date" property="createDate" />
+		<result column="update_by" property="updateBy" />
+		<result column="update_date" property="updateDate" />
+	</resultMap>
+
+	<sql id="property_column">
+		property_id,parent_id,display_name,name,value,description,list_index,parent_path,status,create_by,create_date,update_by,update_date
+	</sql>
+
+	<select id="findPropertyById" resultMap="propertyMap"
+		parameterType="com.zhuochuang.smart.entity.property.Property">
+		select
+		<include refid="property_column" />
+		from property
+		where property_id = #{propertyId,jdbcType=VARCHAR}
+	</select>
+
+	<delete id="deletePropertyById" parameterType="com.zhuochuang.smart.entity.property.Property">
+		delete from
+		property
+		where property_id = #{propertyId,jdbcType=VARCHAR}
+	</delete>
+
+	<insert id="insertProperty" parameterType="com.zhuochuang.smart.entity.property.Property">
+		insert into property
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="propertyId != null and propertyId != ''">
+				property_id,
+			</if>
+			<if test="parentId != null and parentId != ''">
+				parent_id,
+			</if>
+			<if test="displayName != null and displayName != ''">
+				display_name,
+			</if>
+			<if test="name != null and name != ''">
+				name,
+			</if>
+			<if test="value != null and value != ''">
+				value,
+			</if>
+			<if test="description != null and description != ''">
+				description,
+			</if>
+			<if test="listIndex != null and listIndex != ''">
+				list_index,
+			</if>
+			<if test="parentPath != null and parentPath != ''">
+				parent_path,
+			</if>
+			<if test="status != null and status != ''">
+				status,
+			</if>
+			<if test="createBy != null and createBy != ''">
+				create_by,
+			</if>
+			<if test="createDate != null and createDate != ''">
+				create_date,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="propertyId != null and propertyId != ''">
+				#{propertyId,jdbcType=VARCHAR},
+			</if>
+			<if test="parentId != null and parentId != ''">
+				#{parentId,jdbcType=VARCHAR},
+			</if>
+			<if test="displayName != null and displayName != ''">
+				#{displayName,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null and name != ''">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="value != null and value != ''">
+				#{value,jdbcType=VARCHAR},
+			</if>
+			<if test="description != null and description != ''">
+				#{description,jdbcType=VARCHAR},
+			</if>
+			<if test="listIndex != null and listIndex != ''">
+				#{listIndex,jdbcType=VARCHAR},
+			</if>
+			<if test="parentPath != null and parentPath != ''">
+				#{parentPath,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null and status != ''">
+				#{status,jdbcType=VARCHAR},
+			</if>
+			<if test="createBy != null and createBy != ''">
+				#{createBy,jdbcType=VARCHAR},
+			</if>
+			now(),
+		</trim>
+	</insert>
+
+	<update id="updatePropertyById" parameterType="com.zhuochuang.smart.entity.property.Property">
+		update property
+		<set>
+			<if test="parentId != null and parentId != ''">
+				parent_id = #{parentId,jdbcType=VARCHAR},
+			</if>
+			<if test="displayName != null and displayName != ''">
+				display_name = #{displayName,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null and name != ''">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="value != null and value != ''">
+				value = #{value,jdbcType=VARCHAR},
+			</if>
+			<if test="description != null and description != ''">
+				description = #{description,jdbcType=VARCHAR},
+			</if>
+			<if test="listIndex != null and listIndex != ''">
+				list_index = #{listIndex,jdbcType=VARCHAR},
+			</if>
+			<if test="parentPath != null and parentPath != ''">
+				parent_path = #{parentPath,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null and status != ''">
+				status = #{status,jdbcType=VARCHAR},
+			</if>
+			<if test="updateBy != null and updateBy != ''">
+				update_by = #{updateBy,jdbcType=VARCHAR},
+			</if>
+			update_date = now(),
+		</set>
+		where property_id = #{propertyId,jdbcType=VARCHAR}
+	</update>
+</mapper>
